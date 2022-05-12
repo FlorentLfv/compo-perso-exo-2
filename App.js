@@ -1,11 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <TextImage imageLink={require('./assets/mlem.jpg')} text='The mlem' />
     </View>
   );
 }
@@ -16,5 +14,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'column',
+  },
+  image: {
+    width: 400,
+    height: 400,
+    alignSelf: 'center',
+  },
+  textSize: {
+    fontSize: 20,
+    textAlign: 'center',
   },
 });
+
+const TextImage = (props) => {
+  const { imageLink } = props;
+  const { text } = props;
+  return (
+    <View>
+      <Image source={imageLink} style={styles.image} />
+      <Text style={styles.textSize}>{text}</Text>
+    </View>
+  )
+}
